@@ -1,9 +1,10 @@
+require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const app = express();
 const routes = require('./src/routes');
 const { init } = require('./src/services/serviceLocator/composer');
-const port = 8081;
+const port = process.env.PORT || 8081;
 
 app.use(cors());
 app.use(express.json()); 

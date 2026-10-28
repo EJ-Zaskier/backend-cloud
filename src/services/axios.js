@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+// El token se lee de variables de entorno (ver .env.example).
 class Client {
     client;
 
@@ -7,7 +8,7 @@ class Client {
         this.client = axios.create ({
             baseURL: "https://api.cloudflare.com/client/v4/",
             headers: {
-                Authorization: `Bearer H8J9eWi-Wb_GC5u4IAq8c7oxOnllIublWsqAou6x`
+                Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`
             }
         })
     }

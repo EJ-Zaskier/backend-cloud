@@ -21,15 +21,15 @@ class Cloudflare extends Client {
         const formData = new FormData();
         const image  = fs.createReadStream(path);
         formData.append('file', image);
-        return this.client.post("/accounts/f28e470763cc6bf04c800600db561c8a/images/v1", formData);
+        return this.client.post(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/images/v1`, formData);
     }
 
     removeImage(imageId){
-        return this.client.delete(`/accounts/f28e470763cc6bf04c800600db561c8a/images/v1/${imageId}`);
+        return this.client.delete(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/images/v1/${imageId}`);
     }
 
     listImages(){
-        return this.client.get("/accounts/f28e470763cc6bf04c800600db561c8a/images/v1");
+        return this.client.get(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/images/v1`);
     }
 }
 
